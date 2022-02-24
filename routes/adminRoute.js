@@ -23,6 +23,12 @@ const {
     updateAdminDetails
 } = require('../controller/adminController.js');
 
+const { 
+    loginData,
+     logout, 
+     login
+} = require('../controller/LoginSignupController.js');
+
 
 
 router.route('/admin/manageservices/allservices').get(getAllServices);                                 //get all services
@@ -45,5 +51,8 @@ router.route('/admin/myaccountdetails/:id').get(getAdmin);                      
 router.route('/admin/updatemyaccount/:id').post(updateAdminDetails);                                      // update admin details
 
 
+router.route('/login').post(loginData);                                                               //get logindata(email,password)
+router.route('/login').get(login);                                                               //get logindata(email,password)
+router.route('/logout').get(logout);                                                               //get logindata(email,password)
 
 module.exports = router;
