@@ -7,9 +7,4 @@ const {allUsers} = require('../controller/addUser.js');
 router.route('/').get(allUsers);
 
 
-
-
-
-
-
 module.exports = router;
