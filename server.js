@@ -6,6 +6,7 @@ const morgan  = require('morgan') ;
 
 // const connection = require('../backend/config/db.js');
 const userRoute = require('./routes/userRouter.js')
+const adminRoute = require('./routes/adminRoute.js')
 
 dotenv.config()
 
@@ -19,7 +20,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use(express.json());
-app.use('/',userRoute)
+// app.use('/',userRoute)
+app.use('/',adminRoute)
 
 app.listen(
     PORT,
