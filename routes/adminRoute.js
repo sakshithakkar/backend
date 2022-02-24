@@ -26,7 +26,8 @@ const {
 const { 
     loginData,
      logout, 
-     login
+     login,
+     registrationOfAdmin
 } = require('../controller/LoginSignupController.js');
 
 
@@ -54,5 +55,6 @@ router.route('/admin/updatemyaccount/:id').post(updateAdminDetails);            
 router.route('/login').post(loginData);                                                               //get logindata(email,password)
 router.route('/login').get(login);                                                               //get logindata(email,password)
 router.route('/logout').get(logout);                                                               //get logindata(email,password)
+router.route('/admin/register').post(registrationOfAdmin);                                                               //get logindata(email,password)
 
 module.exports = router;
