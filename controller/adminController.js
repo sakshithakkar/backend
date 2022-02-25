@@ -42,7 +42,13 @@ const updateAdminDetails = async (req,res) =>{
     })
 }
 
+
+const adminDashboard = async(req,res)=>{
+    res.send('Admin Dashboard');
+}
+
 module.exports = {
     getAdmin,
-    updateAdminDetails
+    updateAdminDetails,
+    adminDashboard
 }

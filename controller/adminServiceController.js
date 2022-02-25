@@ -50,6 +50,13 @@ const addService = async (req,res) =>{
     })
 }
 
+//@desc     add service
+//@route    GET  /admin/addservice
+//@access   Private
+const addServicePage = async (req,res) =>{
+    res.send('Add service page');
+}
+
 //@desc     update Service
 //@route    POST  /admin/updateservice/:id
 //@access   Private
@@ -69,6 +76,14 @@ const updateServiceById = async (req,res) =>{
         }
     })
 }
+
+//@desc     update Service
+//@route    GET  /admin/updateservice/:id
+//@access   Private
+const updateServicePageById = async (req,res) =>{
+    res.send('updatePage');
+}
+
 
 //@desc     delete Service by id
 //@route    DELETE  /admin/deleteservice/:id
@@ -94,6 +109,8 @@ module.exports = {
     getAllServices,
     getServiceById,
     addService,
+    addServicePage,
     updateServiceById,
+    updateServicePageById,
     deleteServiceById
 }

@@ -2,7 +2,7 @@ const connection = require('../config/db.js');
 const generateToken = require('../utils/generateToken.js');
 
 // @desc      get login data from login page
-// @route     /login
+// @route     POST /login
 // @access    public
 
 const loginData = async (req,res) =>{
@@ -25,8 +25,25 @@ const loginData = async (req,res) =>{
     })
 }
 
+// @desc      get login data from login page
+// @route     GET /login
+// @access    public
+
+const loginPage = async (req,res) =>{
+    res.send('login page')
+}
+
+
+// @desc      get registration data from register page
+// @route     GET /login
+// @access    public
+
+const registerPage = async (req,res) =>{
+    res.send('register page')
+}
+
 // @desc      Admin registration
-// @route     /admin/register
+// @route     POST /admin/register
 // @access    public
 
 const registrationOfAdmin = async (req,res) =>{
@@ -79,5 +96,7 @@ module.exports ={
     loginData,
     logout,
     login,
+    loginPage,
+    registerPage,
     registrationOfAdmin
 }
