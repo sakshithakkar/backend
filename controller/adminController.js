@@ -1,6 +1,45 @@
 const connection = require('../config/db.js');
 
 
+
+// @desc      Admin registration
+// @route     POST /admin/register
+// @access    public
+
+const registrationOfAdmin = async (req,res) =>{
+    let name = req.body.name;
+    let fullname = req.body.fullname;
+    let address = req.body.address;
+    let phone = req.body.phone;
+    let email = req.body.email;
+    let password = req.body.password;
+    let createdTime = new Date().toISOString().slice(0, 19).replace('T', ' ');;
+    let role = 'admin';
+
+    let q1 = "INSERT INTO tblusers (userName ,userFullName ,userAddress ,userPhoneNo ,userEmail ,userPassword, Role,userCreated) VALUES ('"+name+"','"+fullname+"','"+address+"' ,'"+phone+"','"+email+"','"+password+"','"+role+"','"+createdTime+"' )";
+    connection.query(q1,(err,result)=>{
+        if(!err){
+            let gToken = generateToken(email);
+            res.cookie('jwt_Token',gToken,{httpOnly:true})
+            res.send(result);
+            console.log('register successfully');  
+        }
+        else {
+            throw new Error(err);
+        }
+    })
+}
+
+
+// @desc      Admin dashboard
+// @route     POST /admin/dashboard
+// @access    private
+
+const adminDashboard = async(req,res)=>{
+    res.send('Admin Dashboard');
+}
+
+
 //@desc     get admin
 //@route    GET  /admin/myaccount
 //@access   Private
@@ -43,12 +82,9 @@ const updateAdminDetails = async (req,res) =>{
 }
 
 
-const adminDashboard = async(req,res)=>{
-    res.send('Admin Dashboard');
-}
-
 module.exports = {
     getAdmin,
     updateAdminDetails,
-    adminDashboard
+    adminDashboard,
+    registrationOfAdmin
 }
